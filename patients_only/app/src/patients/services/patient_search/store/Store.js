@@ -1,5 +1,4 @@
 import { extendObservable, runInAction } from "mobx";
-import Api from "../Api";
 
 class Store {
   /**
@@ -15,25 +14,25 @@ class Store {
       keyword: "",
       searched: false,
 
-      search: async keyword => {
-        this.loading = true;
+      // search: async keyword => {
+      //   this.loading = true;
 
-        let patients = await Api.search(keyword);
+      //   let patients = await Api.search(keyword);
 
-        runInAction(() => {
-          this.loading = false;
-          this.searched = true;
-          this.set(patients);
-        });
-      },
+      //   runInAction(() => {
+      //     this.loading = false;
+      //     this.searched = true;
+      //     this.set(patients);
+      //   });
+      // },
 
-      find: async patientId => {
-        this.loading = true;
+      // find: async patientId => {
+      //   this.loading = true;
 
-        let patient = await Api.find(patientId);
-        this.loading = false;
-        return patient;
-      },
+      //   let patient = await Api.find(patientId);
+      //   this.loading = false;
+      //   return patient;
+      // },
 
       set: patients => {
         this.patients = patients;
@@ -52,5 +51,5 @@ class Store {
   }
 }
 
-const PatientSearchStore = new Store(Api);
+const PatientSearchStore = new Store();
 export default PatientSearchStore;

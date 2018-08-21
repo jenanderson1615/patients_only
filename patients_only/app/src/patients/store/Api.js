@@ -1,31 +1,15 @@
-import { Http } from "api/Http";
-const Api = new Http("Patients/1/patient");
-
 class PatientApi {
-  constructor(api) {
-    this.api = api;
+  constructor() {
   }
 
   find = async patientId => {
-    let res = await this.api.get("/" + patientId);
-    return res.data || {};
-  };
-
-  alerts = async patientId => {
-    let res = await this.api.get("/" + patientId + "/alerts");
-    return res.data || [];
-  };
-
-  referrals = async patientId => {
-    let res = await this.api.get("/" + patientId + "/referrals");
-    return res.data || [];
-  };
-
-  incidents = async patientId => {
-    let res = await this.api.get("/" + patientId + "/incidents");
-    return res.data || [];
+    let res = {
+      firstName: "Tom",
+      lastName: "Test"
+    }
+    return res || {};
   };
 }
 
-const newApi = new PatientApi(Api);
+const newApi = new PatientApi();
 export default newApi;
